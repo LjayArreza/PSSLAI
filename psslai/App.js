@@ -1,5 +1,12 @@
 import * as React from 'react';
-import {SafeAreaView, Text, View, Image, TouchableOpacity} from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -118,6 +125,20 @@ function NotificationsScreen({navigation}) {
   );
 }
 
+function CustomDrawerContent(props) {
+  return (
+    <SafeAreaView style={{flex: 1, backgroundColor: '#1a237e'}}>
+      <ScrollView>
+        <TouchableOpacity
+          style={{marginTop: 20}}
+          onPress={() => props.navigation.navigate('MenuTab')}>
+          <Text style={{color: '#FFF', marginStart: 10}}>Home</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
 const Tab = createBottomTabNavigator();
 
 const navOptionHandler = () => ({
@@ -202,7 +223,9 @@ const iDrawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <iDrawer.Navigator initialRouteName="MenuTab">
+      <iDrawer.Navigator
+        initialRouteName="MenuTab"
+        drawerContent={props => CustomDrawerContent(props)}>
         <iDrawer.Screen name="MenuTab" component={TabNavigator} />
         <iDrawer.Screen name="Notifications" component={NotificationsScreen} />
       </iDrawer.Navigator>
