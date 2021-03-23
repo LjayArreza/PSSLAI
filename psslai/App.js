@@ -14,7 +14,7 @@ function CustomHeader({title, isHome, navigation}) {
       }}>
       <View style={{flex: 1, justifyContent: 'center'}}>
         {isHome ? (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <Image
               style={{width: 20, height: 20, marginStart: 10}}
               source={require('./src/images/black_menu.png')}
