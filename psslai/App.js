@@ -4,23 +4,32 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
-function CustomHeader({title}) {
+function CustomHeader({title, isHome, navigation}) {
   return (
     <View
       style={{
         flexDirection: 'row',
         height: 50,
       }}>
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-        }}>
-        <Image
-          style={{width: 20, height: 20, marginStart: 10}}
-          source={require('./src/images/black_menu.png')}
-          resizeMode="contain"
-        />
+      <View style={{flex: 1, justifyContent: 'center'}}>
+        {isHome ? (
+          <Image
+            style={{width: 20, height: 20, marginStart: 10}}
+            source={require('./src/images/black_menu.png')}
+            resizeMode="contain"
+          />
+        ) : (
+          <TouchableOpacity
+            style={{flexDirection: 'row', alignItems: 'center'}}
+            onPress={() => navigation.goBack()}>
+            <Image
+              style={{width: 20, height: 20, marginStart: 10}}
+              source={require('./src/images/black_back.png')}
+              resizeMode="contain"
+            />
+            <Text>Back</Text>
+          </TouchableOpacity>
+        )}
       </View>
       <View
         style={{
@@ -37,7 +46,7 @@ function CustomHeader({title}) {
 function HomeScreen({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Home" isHome={true} />
+      <CustomHeader title="Home" isHome={true} navigation={navigation} />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text>Home!</Text>
         <TouchableOpacity
@@ -53,7 +62,7 @@ function HomeScreen({navigation}) {
 function HomeDetails({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Home Details" />
+      <CustomHeader title="Home Details" navigation={navigation} />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text>Home Details</Text>
         <TouchableOpacity
@@ -66,32 +75,32 @@ function HomeDetails({navigation}) {
   );
 }
 
-function SettingsScreen({navigation}) {
+function ContactScreen({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Settings" />
+      <CustomHeader title="Contact" navigation={navigation} />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Settings!</Text>
+        <Text>Contact Us!</Text>
         <TouchableOpacity
           style={{marginTop: 20}}
-          onPress={() => navigation.navigate('SettingsDetails')}>
-          <Text>Go Settings Detail</Text>
+          onPress={() => navigation.navigate('ContactDetails')}>
+          <Text>Go Contact Detail</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
 }
 
-function SettingsDetails({navigation}) {
+function ContactDetails({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Settings Details" isHome={true} />
+      <CustomHeader title="Contact Details" isHome={true} />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Settings Details</Text>
+        <Text>Contact Details</Text>
         <TouchableOpacity
           style={{marginTop: 20}}
-          onPress={() => navigation.navigate('Settings')}>
-          <Text>Go to Settings</Text>
+          onPress={() => navigation.navigate('Contact')}>
+          <Text>Go to Contact</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -99,52 +108,81 @@ function SettingsDetails({navigation}) {
 }
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
 const navOptionHandler = () => ({
   headerShown: false,
 });
 
+const StackHome = createStackNavigator();
+
 function HomeStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
+    <StackHome.Navigator>
+      <StackHome.Screen
         name="Home"
         component={HomeScreen}
         options={navOptionHandler}
       />
-      <Stack.Screen
+      <StackHome.Screen
         name="HomeDetails"
         component={HomeDetails}
         options={navOptionHandler}
       />
-    </Stack.Navigator>
+    </StackHome.Navigator>
   );
 }
 
-function SettingsStack() {
+const StackContact = createStackNavigator();
+
+function ContactStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Settings"
-        component={SettingsScreen}
+    <StackContact.Navigator>
+      <StackContact.Screen
+        name="Contact"
+        component={ContactScreen}
         options={navOptionHandler}
       />
-      <Stack.Screen
-        name="SettingsDetails"
-        component={SettingsDetails}
+      <StackContact.Screen
+        name="ContactDetails"
+        component={ContactDetails}
         options={navOptionHandler}
       />
-    </Stack.Navigator>
+    </StackContact.Navigator>
   );
 }
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = focused
+                ? require('./src/images/home-filled.png')
+                : require('./src/images/home.png');
+            } else if (route.name === 'Contact') {
+              iconName = focused
+                ? require('./src/images/contact-filled.png')
+                : require('./src/images/contact.png');
+            }
+
+            return (
+              <Image
+                source={iconName}
+                style={{width: 20, height: 20, resizeMode: 'contain'}}
+              />
+            );
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: 'red',
+          inactiveTintColor: 'black',
+        }}>
         <Tab.Screen name="Home" component={HomeStack} />
-        <Tab.Screen name="Settings" component={SettingsStack} />
+        <Tab.Screen name="Contact" component={ContactStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );
