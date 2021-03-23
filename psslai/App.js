@@ -3,6 +3,7 @@ import {SafeAreaView, Text, View, Image, TouchableOpacity} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 function CustomHeader({title, isHome, navigation}) {
   return (
@@ -13,11 +14,13 @@ function CustomHeader({title, isHome, navigation}) {
       }}>
       <View style={{flex: 1, justifyContent: 'center'}}>
         {isHome ? (
-          <Image
-            style={{width: 20, height: 20, marginStart: 10}}
-            source={require('./src/images/black_menu.png')}
-            resizeMode="contain"
-          />
+          <TouchableOpacity>
+            <Image
+              style={{width: 20, height: 20, marginStart: 10}}
+              source={require('./src/images/black_menu.png')}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
         ) : (
           <TouchableOpacity
             style={{flexDirection: 'row', alignItems: 'center'}}
@@ -107,6 +110,14 @@ function ContactDetails({navigation}) {
   );
 }
 
+function NotificationsScreen({navigation}) {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Button onPress={() => navigation.goBack()} title="Go back home" />
+    </View>
+  );
+}
+
 const Tab = createBottomTabNavigator();
 
 const navOptionHandler = () => ({
@@ -151,39 +162,50 @@ function ContactStack() {
   );
 }
 
+function TabNavigator() {
+  return (
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused, color, size}) => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = focused
+              ? require('./src/images/home-filled.png')
+              : require('./src/images/home.png');
+          } else if (route.name === 'Contact') {
+            iconName = focused
+              ? require('./src/images/contact-filled.png')
+              : require('./src/images/contact.png');
+          }
+
+          return (
+            <Image
+              source={iconName}
+              style={{width: 20, height: 20, resizeMode: 'contain'}}
+            />
+          );
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: 'red',
+        inactiveTintColor: 'black',
+      }}>
+      <Tab.Screen name="Home" component={HomeStack} />
+      <Tab.Screen name="Contact" component={ContactStack} />
+    </Tab.Navigator>
+  );
+}
+
+const iDrawer = createDrawerNavigator();
+
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
-            let iconName;
-
-            if (route.name === 'Home') {
-              iconName = focused
-                ? require('./src/images/home-filled.png')
-                : require('./src/images/home.png');
-            } else if (route.name === 'Contact') {
-              iconName = focused
-                ? require('./src/images/contact-filled.png')
-                : require('./src/images/contact.png');
-            }
-
-            return (
-              <Image
-                source={iconName}
-                style={{width: 20, height: 20, resizeMode: 'contain'}}
-              />
-            );
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: 'red',
-          inactiveTintColor: 'black',
-        }}>
-        <Tab.Screen name="Home" component={HomeStack} />
-        <Tab.Screen name="Contact" component={ContactStack} />
-      </Tab.Navigator>
+      <iDrawer.Navigator initialRouteName="MenuTab">
+        <iDrawer.Screen name="MenuTab" component={TabNavigator} />
+        <iDrawer.Screen name="Notifications" component={NotificationsScreen} />
+      </iDrawer.Navigator>
     </NavigationContainer>
   );
 }
