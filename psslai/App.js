@@ -300,8 +300,8 @@ function TabNavigator() {
               : require('./src/images/contact.png');
           } else if (route.name === 'More') {
             iconName = focused
-              ? require('./src/images/contact-filled.png')
-              : require('./src/images/contact.png');
+              ? require('./src/images/more-filled.png')
+              : require('./src/images/more.png');
           }
 
           return (
