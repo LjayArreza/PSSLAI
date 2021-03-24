@@ -85,32 +85,32 @@ function DashboardDetails({navigation}) {
   );
 }
 
-function ContactScreen({navigation}) {
+function TransferScreen({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Contact" navigation={navigation} />
+      <CustomHeader title="Transfer" navigation={navigation} />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Contact Us!</Text>
+        <Text>Transfer Funds</Text>
         <TouchableOpacity
           style={{marginTop: 20}}
-          onPress={() => navigation.navigate('ContactDetails')}>
-          <Text>Go Contact Detail</Text>
+          onPress={() => navigation.navigate('TransferDetails')}>
+          <Text>Go Transfer Detail</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
 }
 
-function ContactDetails({navigation}) {
+function TransferDetails({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Contact Details" isHome={true} />
+      <CustomHeader title="Transfer Details" isHome={true} />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Contact Details</Text>
+        <Text>Transfer Funds Details</Text>
         <TouchableOpacity
           style={{marginTop: 20}}
-          onPress={() => navigation.navigate('Contact')}>
-          <Text>Go to Contact</Text>
+          onPress={() => navigation.navigate('Transfer')}>
+          <Text>Go to Transfer Funds</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -237,22 +237,22 @@ function DashboardStack() {
   );
 }
 
-const StackContact = createStackNavigator();
+const StackTransfer = createStackNavigator();
 
-function ContactStack() {
+function TransferStack() {
   return (
-    <StackContact.Navigator>
-      <StackContact.Screen
-        name="Contact"
-        component={ContactScreen}
+    <StackTransfer.Navigator>
+      <StackTransfer.Screen
+        name="Transfer"
+        component={TransferScreen}
         options={navOptionHandler}
       />
-      <StackContact.Screen
-        name="ContactDetails"
-        component={ContactDetails}
+      <StackTransfer.Screen
+        name="TransferDetails"
+        component={TransferDetails}
         options={navOptionHandler}
       />
-    </StackContact.Navigator>
+    </StackTransfer.Navigator>
   );
 }
 
@@ -317,10 +317,10 @@ function TabNavigator() {
         inactiveTintColor: 'black',
       }}>
       <Tab.Screen name="Dashboard" component={DashboardStack} />
-      <Tab.Screen name="Transfer Funds" component={ContactStack} />
+      <Tab.Screen name="Transfer Funds" component={TransferStack} />
       <Tab.Screen name="Pay Bills" component={PayBillsStack} />
-      <Tab.Screen name="Buy Load" component={ContactStack} />
-      <Tab.Screen name="More" component={ContactStack} />
+      <Tab.Screen name="Buy Load" component={TransferStack} />
+      <Tab.Screen name="More" component={TransferStack} />
     </Tab.Navigator>
   );
 }
