@@ -53,32 +53,32 @@ function CustomHeader({title, isHome, navigation}) {
   );
 }
 
-function HomeScreen({navigation}) {
+function DashboardScreen({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Home" isHome={true} navigation={navigation} />
+      <CustomHeader title="Dashboard" isHome={true} navigation={navigation} />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Home!</Text>
+        <Text>Dashboard!</Text>
         <TouchableOpacity
           style={{marginTop: 20}}
-          onPress={() => navigation.navigate('HomeDetails')}>
-          <Text>Go Home Detail</Text>
+          onPress={() => navigation.navigate('DashboardDetails')}>
+          <Text>Go Dashboard Detail</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
 }
 
-function HomeDetails({navigation}) {
+function DashboardDetails({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Home Details" navigation={navigation} />
+      <CustomHeader title="Dashboard Details" navigation={navigation} />
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Home Details</Text>
+        <Text>Dashboard Details</Text>
         <TouchableOpacity
           style={{marginTop: 20}}
-          onPress={() => navigation.navigate('Home')}>
-          <Text>Go to Home</Text>
+          onPress={() => navigation.navigate('Dashboard')}>
+          <Text>Go to Dashboard</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -117,10 +117,42 @@ function ContactDetails({navigation}) {
   );
 }
 
+function PayBillsScreen({navigation}) {
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      <CustomHeader title="Pay Bills" navigation={navigation} />
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text>Pay Bills!</Text>
+        <TouchableOpacity
+          style={{marginTop: 20}}
+          onPress={() => navigation.navigate('PayBillsDetails')}>
+          <Text>Go Pay Bills Detail</Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
+}
+
+function PayBillsDetails({navigation}) {
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      <CustomHeader title="Pay Bills" navigation={navigation} />
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text>Pay Bills!</Text>
+        <TouchableOpacity
+          style={{marginTop: 20}}
+          onPress={() => navigation.navigate('Pay Bills')}>
+          <Text>Go Pay Bills Detail</Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
+}
+
 function NotificationsScreen({navigation}) {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
+      <Button onPress={() => navigation.goBack()} title="Go back Dashboard" />
     </View>
   );
 }
@@ -129,10 +161,51 @@ function CustomDrawerContent(props) {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#1a237e'}}>
       <ScrollView>
+        <Text
+          style={{
+            color: '#FFF',
+            marginTop: 10,
+            marginStart: 10,
+            fontWeight: 'bold',
+            fontSize: 40,
+          }}>
+          PSSLAI
+        </Text>
+        <View
+          style={{
+            backgroundColor: '#FFF',
+            width: '100%',
+            height: 2,
+            marginTop: 10,
+          }}
+        />
         <TouchableOpacity
-          style={{marginTop: 20}}
+          style={{marginTop: 10}}
           onPress={() => props.navigation.navigate('MenuTab')}>
-          <Text style={{color: '#FFF', marginStart: 10}}>Home</Text>
+          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+            Home
+          </Text>
+          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+            Login
+          </Text>
+          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+            Sign Up
+          </Text>
+          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+            Membership
+          </Text>
+          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+            Products
+          </Text>
+          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+            About
+          </Text>
+          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+            Our Offices
+          </Text>
+          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+            Contact
+          </Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
@@ -145,22 +218,22 @@ const navOptionHandler = () => ({
   headerShown: false,
 });
 
-const StackHome = createStackNavigator();
+const StackDashboard = createStackNavigator();
 
-function HomeStack() {
+function DashboardStack() {
   return (
-    <StackHome.Navigator>
-      <StackHome.Screen
-        name="Home"
-        component={HomeScreen}
+    <StackDashboard.Navigator>
+      <StackDashboard.Screen
+        name="Dashboard"
+        component={DashboardScreen}
         options={navOptionHandler}
       />
-      <StackHome.Screen
-        name="HomeDetails"
-        component={HomeDetails}
+      <StackDashboard.Screen
+        name="DashboardDetails"
+        component={DashboardDetails}
         options={navOptionHandler}
       />
-    </StackHome.Navigator>
+    </StackDashboard.Navigator>
   );
 }
 
@@ -183,6 +256,25 @@ function ContactStack() {
   );
 }
 
+const StackPayBills = createStackNavigator();
+
+function PayBillsStack() {
+  return (
+    <StackPayBills.Navigator>
+      <StackPayBills.Screen
+        name="Pay Bills"
+        component={PayBillsScreen}
+        options={navOptionHandler}
+      />
+      <StackPayBills.Screen
+        name="PayBillsDetails"
+        component={PayBillsDetails}
+        options={navOptionHandler}
+      />
+    </StackPayBills.Navigator>
+  );
+}
+
 function TabNavigator() {
   return (
     <Tab.Navigator
@@ -190,11 +282,23 @@ function TabNavigator() {
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
 
-          if (route.name === 'Home') {
+          if (route.name === 'Dashboard') {
             iconName = focused
               ? require('./src/images/home-filled.png')
               : require('./src/images/home.png');
-          } else if (route.name === 'Contact') {
+          } else if (route.name === 'Transfer Funds') {
+            iconName = focused
+              ? require('./src/images/contact-filled.png')
+              : require('./src/images/contact.png');
+          } else if (route.name === 'Pay Bills') {
+            iconName = focused
+              ? require('./src/images/contact-filled.png')
+              : require('./src/images/contact.png');
+          } else if (route.name === 'Buy Load') {
+            iconName = focused
+              ? require('./src/images/contact-filled.png')
+              : require('./src/images/contact.png');
+          } else if (route.name === 'More') {
             iconName = focused
               ? require('./src/images/contact-filled.png')
               : require('./src/images/contact.png');
@@ -212,8 +316,11 @@ function TabNavigator() {
         activeTintColor: 'red',
         inactiveTintColor: 'black',
       }}>
-      <Tab.Screen name="Home" component={HomeStack} />
-      <Tab.Screen name="Contact" component={ContactStack} />
+      <Tab.Screen name="Dashboard" component={DashboardStack} />
+      <Tab.Screen name="Transfer Funds" component={ContactStack} />
+      <Tab.Screen name="Pay Bills" component={PayBillsStack} />
+      <Tab.Screen name="Buy Load" component={ContactStack} />
+      <Tab.Screen name="More" component={ContactStack} />
     </Tab.Navigator>
   );
 }
