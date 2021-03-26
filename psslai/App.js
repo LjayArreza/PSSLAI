@@ -144,21 +144,23 @@ function DashboardScreen({navigation}) {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <View
-            style={{
-              marginTop: 40,
-              borderColor: COLORS.primary,
-              borderWidth: 2,
-              width: 200,
-              height: 50,
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: 6,
-            }}>
-            <Text style={{fontWeight: 'bold', color: COLORS.medium}}>
-              Apply for Visa Card
-            </Text>
-          </View>
+          <TouchableOpacity>
+            <View
+              style={{
+                marginTop: 40,
+                borderColor: COLORS.primary,
+                borderWidth: 2,
+                width: 200,
+                height: 50,
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 6,
+              }}>
+              <Text style={{fontWeight: 'bold', color: COLORS.medium}}>
+                Apply for Visa Card
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -187,27 +189,6 @@ function TransferScreen({navigation}) {
       {/* <CustomHeader title="Transfer" navigation={navigation} /> */}
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text>Transfer Funds</Text>
-        {/* <TouchableOpacity
-          style={{marginTop: 20}}
-          onPress={() => navigation.navigate('TransferDetails')}>
-          <Text>Go Transfer Detail</Text>
-        </TouchableOpacity> */}
-      </View>
-    </SafeAreaView>
-  );
-}
-
-function TransferDetails({navigation}) {
-  return (
-    <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Transfer Details" isHome={true} />
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Transfer Funds Details</Text>
-        <TouchableOpacity
-          style={{marginTop: 20}}
-          onPress={() => navigation.navigate('Transfer')}>
-          <Text>Go to Transfer Funds</Text>
-        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -216,14 +197,8 @@ function TransferDetails({navigation}) {
 function PayBillsScreen({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      {/* <CustomHeader title="Pay Bills" navigation={navigation} /> */}
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text>Pay Bills!</Text>
-        {/* <TouchableOpacity
-          style={{marginTop: 20}}
-          onPress={() => navigation.navigate('PayBillsDetails')}>
-          <Text>Go Pay Bills Detail</Text>
-        </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );
@@ -232,14 +207,8 @@ function PayBillsScreen({navigation}) {
 function BuyLoadScreen({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      {/* <CustomHeader title="Buy Load" navigation={navigation} /> */}
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text>Buy Load!</Text>
-        {/* <TouchableOpacity
-          style={{marginTop: 20}}
-          onPress={() => navigation.navigate('PayBillsDetails')}>
-          <Text>Go Pay Bills Detail</Text>
-        </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );
@@ -251,27 +220,6 @@ function MoreScreen({navigation}) {
       {/* <CustomHeader title="More" navigation={navigation} /> */}
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text>More Screen!</Text>
-        {/* <TouchableOpacity
-          style={{marginTop: 20}}
-          onPress={() => navigation.navigate('PayBillsDetails')}>
-          <Text>Go Pay Bills Detail</Text>
-        </TouchableOpacity> */}
-      </View>
-    </SafeAreaView>
-  );
-}
-
-function PayBillsDetails({navigation}) {
-  return (
-    <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Pay Bills" navigation={navigation} />
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Pay Bills!</Text>
-        <TouchableOpacity
-          style={{marginTop: 20}}
-          onPress={() => navigation.navigate('Pay Bills')}>
-          <Text>Go Pay Bills Detail</Text>
-        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -287,10 +235,10 @@ function NotificationsScreen({navigation}) {
 
 function CustomDrawerContent(props) {
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#1a237e'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}>
       <Text
         style={{
-          color: '#FFF',
+          color: COLORS.white,
           marginTop: 10,
           marginStart: 25,
           fontWeight: 'bold',
@@ -300,7 +248,7 @@ function CustomDrawerContent(props) {
       </Text>
       <View
         style={{
-          backgroundColor: '#FFF',
+          backgroundColor: COLORS.white,
           width: '100%',
           height: 2,
           marginTop: 10,
@@ -325,7 +273,7 @@ function CustomDrawerContent(props) {
           </View>
           <Text
             style={{
-              color: '#FFF',
+              color: COLORS.white,
               marginStart: 15,
               marginTop: 3,
               fontWeight: 'bold',
@@ -352,7 +300,7 @@ function CustomDrawerContent(props) {
           </View>
           <Text
             style={{
-              color: '#FFF',
+              color: COLORS.white,
               marginStart: 15,
               marginTop: 3,
               fontWeight: 'bold',
@@ -379,7 +327,7 @@ function CustomDrawerContent(props) {
           </View>
           <Text
             style={{
-              color: '#FFF',
+              color: COLORS.white,
               marginStart: 15,
               marginTop: 3,
               fontWeight: 'bold',
@@ -406,7 +354,7 @@ function CustomDrawerContent(props) {
           </View>
           <Text
             style={{
-              color: '#FFF',
+              color: COLORS.white,
               marginStart: 15,
               marginTop: 3,
               fontWeight: 'bold',
@@ -433,7 +381,7 @@ function CustomDrawerContent(props) {
           </View>
           <Text
             style={{
-              color: '#FFF',
+              color: COLORS.white,
               marginStart: 15,
               marginTop: 3,
               fontWeight: 'bold',
@@ -460,7 +408,7 @@ function CustomDrawerContent(props) {
           </View>
           <Text
             style={{
-              color: '#FFF',
+              color: COLORS.white,
               marginStart: 15,
               marginTop: 3,
               fontWeight: 'bold',
@@ -487,7 +435,7 @@ function CustomDrawerContent(props) {
           </View>
           <Text
             style={{
-              color: '#FFF',
+              color: COLORS.white,
               marginStart: 15,
               marginTop: 3,
               fontWeight: 'bold',
@@ -514,7 +462,7 @@ function CustomDrawerContent(props) {
           </View>
           <Text
             style={{
-              color: '#FFF',
+              color: COLORS.white,
               marginStart: 15,
               marginTop: 3,
               fontWeight: 'bold',
@@ -525,7 +473,7 @@ function CustomDrawerContent(props) {
       </TouchableOpacity>
 
       <View style={{marginStart: 25, marginTop: 200}}>
-        <Text style={{color: '#FFF'}}>App Version 2.5.2-UAT</Text>
+        <Text style={{color: COLORS.white}}>App Version 2.5.2-UAT</Text>
       </View>
     </SafeAreaView>
   );
@@ -547,11 +495,11 @@ function DashboardStack() {
         component={DashboardScreen}
         options={navOptionHandler}
       />
-      <StackDashboard.Screen
+      {/* <StackDashboard.Screen
         name="DashboardDetails"
         component={DashboardDetails}
         options={navOptionHandler}
-      />
+      /> */}
     </StackDashboard.Navigator>
   );
 }
@@ -566,11 +514,6 @@ function TransferStack() {
         component={TransferScreen}
         options={navOptionHandler}
       />
-      {/* <StackTransfer.Screen
-        name="TransferDetails"
-        component={TransferDetails}
-        options={navOptionHandler}
-      /> */}
     </StackTransfer.Navigator>
   );
 }
@@ -585,11 +528,6 @@ function BuyLoadStack() {
         component={BuyLoadScreen}
         options={navOptionHandler}
       />
-      {/* <StackTransfer.Screen
-        name="TransferDetails"
-        component={TransferDetails}
-        options={navOptionHandler}
-      /> */}
     </StackTransfer.Navigator>
   );
 }
@@ -604,11 +542,6 @@ function PayBillsStack() {
         component={PayBillsScreen}
         options={navOptionHandler}
       />
-      {/* <StackPayBills.Screen
-        name="PayBillsDetails"
-        component={PayBillsDetails}
-        options={navOptionHandler}
-      /> */}
     </StackPayBills.Navigator>
   );
 }
@@ -623,11 +556,6 @@ function MoreScreenStack() {
         component={MoreScreen}
         options={navOptionHandler}
       />
-      {/* <StackPayBills.Screen
-        name="PayBillsDetails"
-        component={PayBillsDetails}
-        options={navOptionHandler}
-      /> */}
     </StackPayBills.Navigator>
   );
 }
@@ -670,8 +598,8 @@ function TabNavigator() {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'red',
-        inactiveTintColor: 'black',
+        activeTintColor: COLORS.medium,
+        inactiveTintColor: COLORS.black,
       }}>
       <Tab.Screen name="Dashboard" component={DashboardStack} />
       <Tab.Screen name="Transfer Funds" component={TransferStack} />
