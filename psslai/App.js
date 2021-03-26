@@ -160,54 +160,245 @@ function NotificationsScreen({navigation}) {
 function CustomDrawerContent(props) {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#1a237e'}}>
-      <ScrollView>
-        <Text
-          style={{
-            color: '#FFF',
-            marginTop: 10,
-            marginStart: 10,
-            fontWeight: 'bold',
-            fontSize: 40,
-          }}>
-          PSSLAI
-        </Text>
+      <Text
+        style={{
+          color: '#FFF',
+          marginTop: 10,
+          marginStart: 25,
+          fontWeight: 'bold',
+          fontSize: 40,
+        }}>
+        PSSLAI
+      </Text>
+      <View
+        style={{
+          backgroundColor: '#FFF',
+          width: '100%',
+          height: 2,
+          marginTop: 10,
+        }}
+      />
+      <TouchableOpacity
+        style={{marginTop: 10}}
+        onPress={() => props.navigation.navigate('MenuTab')}>
         <View
           style={{
-            backgroundColor: '#FFF',
-            width: '100%',
-            height: 2,
-            marginTop: 10,
-          }}
-        />
-        <TouchableOpacity
-          style={{marginTop: 10}}
-          onPress={() => props.navigation.navigate('MenuTab')}>
-          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+            flexDirection: 'row',
+            marginTop: 20,
+            height: 50,
+            alignItems: 'center',
+          }}>
+          <View style={{marginStart: 25}}>
+            <Image
+              style={{width: 20, height: 20}}
+              source={require('./src/images/home_icon_white.png')}
+              resizeMode="contain"
+            />
+          </View>
+          <Text
+            style={{
+              color: '#FFF',
+              marginStart: 15,
+              marginTop: 3,
+              fontWeight: 'bold',
+            }}>
             Home
           </Text>
-          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{marginTop: 10}}
+        onPress={() => props.navigation.navigate('MenuTab')}>
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 50,
+            alignItems: 'center',
+          }}>
+          <View style={{marginStart: 25}}>
+            <Image
+              style={{width: 20, height: 20}}
+              source={require('./src/images/home_icon_white.png')}
+              resizeMode="contain"
+            />
+          </View>
+          <Text
+            style={{
+              color: '#FFF',
+              marginStart: 15,
+              marginTop: 3,
+              fontWeight: 'bold',
+            }}>
             Login
           </Text>
-          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{marginTop: 10}}
+        onPress={() => props.navigation.navigate('MenuTab')}>
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 50,
+            alignItems: 'center',
+          }}>
+          <View style={{marginStart: 25}}>
+            <Image
+              style={{width: 20, height: 20}}
+              source={require('./src/images/home_icon_white.png')}
+              resizeMode="contain"
+            />
+          </View>
+          <Text
+            style={{
+              color: '#FFF',
+              marginStart: 15,
+              marginTop: 3,
+              fontWeight: 'bold',
+            }}>
             Sign Up
           </Text>
-          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{marginTop: 10}}
+        onPress={() => props.navigation.navigate('MenuTab')}>
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 50,
+            alignItems: 'center',
+          }}>
+          <View style={{marginStart: 25}}>
+            <Image
+              style={{width: 20, height: 20}}
+              source={require('./src/images/home_icon_white.png')}
+              resizeMode="contain"
+            />
+          </View>
+          <Text
+            style={{
+              color: '#FFF',
+              marginStart: 15,
+              marginTop: 3,
+              fontWeight: 'bold',
+            }}>
             Membership
           </Text>
-          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{marginTop: 10}}
+        onPress={() => props.navigation.navigate('MenuTab')}>
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 50,
+            alignItems: 'center',
+          }}>
+          <View style={{marginStart: 25}}>
+            <Image
+              style={{width: 20, height: 20}}
+              source={require('./src/images/home_icon_white.png')}
+              resizeMode="contain"
+            />
+          </View>
+          <Text
+            style={{
+              color: '#FFF',
+              marginStart: 15,
+              marginTop: 3,
+              fontWeight: 'bold',
+            }}>
             Products
           </Text>
-          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{marginTop: 10}}
+        onPress={() => props.navigation.navigate('MenuTab')}>
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 50,
+            alignItems: 'center',
+          }}>
+          <View style={{marginStart: 25}}>
+            <Image
+              style={{width: 20, height: 20}}
+              source={require('./src/images/home_icon_white.png')}
+              resizeMode="contain"
+            />
+          </View>
+          <Text
+            style={{
+              color: '#FFF',
+              marginStart: 15,
+              marginTop: 3,
+              fontWeight: 'bold',
+            }}>
             About
           </Text>
-          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{marginTop: 10}}
+        onPress={() => props.navigation.navigate('MenuTab')}>
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 50,
+            alignItems: 'center',
+          }}>
+          <View style={{marginStart: 25}}>
+            <Image
+              style={{width: 20, height: 20}}
+              source={require('./src/images/home_icon_white.png')}
+              resizeMode="contain"
+            />
+          </View>
+          <Text
+            style={{
+              color: '#FFF',
+              marginStart: 15,
+              marginTop: 3,
+              fontWeight: 'bold',
+            }}>
             Our Offices
           </Text>
-          <Text style={{color: '#FFF', marginStart: 10, marginTop: 20}}>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{marginTop: 10}}
+        onPress={() => props.navigation.navigate('MenuTab')}>
+        <View
+          style={{
+            flexDirection: 'row',
+            height: 50,
+            alignItems: 'center',
+          }}>
+          <View style={{marginStart: 25}}>
+            <Image
+              style={{width: 20, height: 20}}
+              source={require('./src/images/home_icon_white.png')}
+              resizeMode="contain"
+            />
+          </View>
+          <Text
+            style={{
+              color: '#FFF',
+              marginStart: 15,
+              marginTop: 3,
+              fontWeight: 'bold',
+            }}>
             Contact
           </Text>
-        </TouchableOpacity>
-      </ScrollView>
+        </View>
+      </TouchableOpacity>
+
+      <View style={{marginStart: 25, marginTop: 200}}>
+        <Text style={{color: '#FFF'}}>App Version 2.5.2-UAT</Text>
+      </View>
     </SafeAreaView>
   );
 }
