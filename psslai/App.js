@@ -11,6 +11,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import COLORS from './app/colors/COLORS';
+import {color} from 'react-native-reanimated';
 
 function CustomHeader({title, isHome, navigation}) {
   return (
@@ -56,15 +58,109 @@ function CustomHeader({title, isHome, navigation}) {
 function DashboardScreen({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Dashboard" isHome={true} navigation={navigation} />
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Dashboard!</Text>
-        <TouchableOpacity
-          style={{marginTop: 20}}
-          onPress={() => navigation.navigate('DashboardDetails')}>
-          <Text>Go Dashboard Detail</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView>
+        <View
+          style={{
+            backgroundColor: COLORS.transparent,
+            width: '100%',
+            marginTop: 20,
+          }}>
+          <Image
+            style={{marginStart: 20, height: 30, width: 90}}
+            source={require('./src/images/psslai_logo.png')}
+          />
+          <TouchableOpacity>
+            <Image
+              style={{
+                marginStart: '90%',
+                height: 25,
+                width: 25,
+                marginTop: -25,
+              }}
+              source={require('./src/images/notification_icon.png')}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View style={{marginStart: 20, marginTop: 30}}>
+          <Text
+            style={{color: COLORS.primary, fontSize: 30, fontWeight: 'bold'}}>
+            Get yours now!
+          </Text>
+        </View>
+
+        <View
+          style={{
+            backgroundColor: COLORS.primary,
+            width: '90%',
+            height: '55%',
+            marginStart: 20,
+            marginTop: 20,
+            borderRadius: 10,
+          }}>
+          <Text
+            style={{
+              color: COLORS.white,
+              marginStart: 20,
+              marginTop: 20,
+              fontSize: 25,
+              fontWeight: 'bold',
+            }}>
+            PSSLAI Visa Card
+          </Text>
+          <Text
+            style={{
+              color: COLORS.white,
+              marginStart: 20,
+              fontSize: 20,
+            }}>
+            xxxx xxxx xxxx
+          </Text>
+        </View>
+
+        <View
+          style={{
+            marginStart: 25,
+            marginTop: 50,
+            flexDirection: 'row',
+            flex: 1,
+          }}>
+          <Image
+            style={{width: 30, height: 30}}
+            source={require('./src/images/withdraw_icon.png')}
+          />
+
+          <Text
+            style={{flex: 1, flexWrap: 'wrap', marginStart: 30, marginEnd: 30}}>
+            Withdraw cash from any UnionBank/Banknet/Visa ATM
+          </Text>
+        </View>
+
+        <View
+          style={{
+            marginStart: 20,
+            marginEnd: 20,
+            alignSelf: 'center',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <View
+            style={{
+              marginTop: 40,
+              borderColor: COLORS.primary,
+              borderWidth: 2,
+              width: 200,
+              height: 50,
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 6,
+            }}>
+            <Text style={{fontWeight: 'bold', color: COLORS.medium}}>
+              Apply for Visa Card
+            </Text>
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -88,14 +184,14 @@ function DashboardDetails({navigation}) {
 function TransferScreen({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Transfer" navigation={navigation} />
+      {/* <CustomHeader title="Transfer" navigation={navigation} /> */}
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text>Transfer Funds</Text>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={{marginTop: 20}}
           onPress={() => navigation.navigate('TransferDetails')}>
           <Text>Go Transfer Detail</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );
@@ -120,14 +216,46 @@ function TransferDetails({navigation}) {
 function PayBillsScreen({navigation}) {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Pay Bills" navigation={navigation} />
+      {/* <CustomHeader title="Pay Bills" navigation={navigation} /> */}
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <Text>Pay Bills!</Text>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={{marginTop: 20}}
           onPress={() => navigation.navigate('PayBillsDetails')}>
           <Text>Go Pay Bills Detail</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+      </View>
+    </SafeAreaView>
+  );
+}
+
+function BuyLoadScreen({navigation}) {
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      {/* <CustomHeader title="Buy Load" navigation={navigation} /> */}
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text>Buy Load!</Text>
+        {/* <TouchableOpacity
+          style={{marginTop: 20}}
+          onPress={() => navigation.navigate('PayBillsDetails')}>
+          <Text>Go Pay Bills Detail</Text>
+        </TouchableOpacity> */}
+      </View>
+    </SafeAreaView>
+  );
+}
+
+function MoreScreen({navigation}) {
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      {/* <CustomHeader title="More" navigation={navigation} /> */}
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text>More Screen!</Text>
+        {/* <TouchableOpacity
+          style={{marginTop: 20}}
+          onPress={() => navigation.navigate('PayBillsDetails')}>
+          <Text>Go Pay Bills Detail</Text>
+        </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );
@@ -438,11 +566,30 @@ function TransferStack() {
         component={TransferScreen}
         options={navOptionHandler}
       />
-      <StackTransfer.Screen
+      {/* <StackTransfer.Screen
         name="TransferDetails"
         component={TransferDetails}
         options={navOptionHandler}
+      /> */}
+    </StackTransfer.Navigator>
+  );
+}
+
+const StackBuyLoad = createStackNavigator();
+
+function BuyLoadStack() {
+  return (
+    <StackTransfer.Navigator>
+      <StackTransfer.Screen
+        name="Transfer"
+        component={BuyLoadScreen}
+        options={navOptionHandler}
       />
+      {/* <StackTransfer.Screen
+        name="TransferDetails"
+        component={TransferDetails}
+        options={navOptionHandler}
+      /> */}
     </StackTransfer.Navigator>
   );
 }
@@ -457,11 +604,30 @@ function PayBillsStack() {
         component={PayBillsScreen}
         options={navOptionHandler}
       />
-      <StackPayBills.Screen
+      {/* <StackPayBills.Screen
         name="PayBillsDetails"
         component={PayBillsDetails}
         options={navOptionHandler}
+      /> */}
+    </StackPayBills.Navigator>
+  );
+}
+
+const StackMoreScreen = createStackNavigator();
+
+function MoreScreenStack() {
+  return (
+    <StackPayBills.Navigator>
+      <StackPayBills.Screen
+        name="More"
+        component={MoreScreen}
+        options={navOptionHandler}
       />
+      {/* <StackPayBills.Screen
+        name="PayBillsDetails"
+        component={PayBillsDetails}
+        options={navOptionHandler}
+      /> */}
     </StackPayBills.Navigator>
   );
 }
@@ -510,8 +676,8 @@ function TabNavigator() {
       <Tab.Screen name="Dashboard" component={DashboardStack} />
       <Tab.Screen name="Transfer Funds" component={TransferStack} />
       <Tab.Screen name="Pay Bills" component={PayBillsStack} />
-      <Tab.Screen name="Buy Load" component={TransferStack} />
-      <Tab.Screen name="More" component={TransferStack} />
+      <Tab.Screen name="Buy Load" component={BuyLoadStack} />
+      <Tab.Screen name="More" component={MoreScreenStack} />
     </Tab.Navigator>
   );
 }
