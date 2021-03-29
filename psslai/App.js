@@ -167,21 +167,21 @@ function DashboardScreen({navigation}) {
   );
 }
 
-function DashboardDetails({navigation}) {
-  return (
-    <SafeAreaView style={{flex: 1}}>
-      <CustomHeader title="Dashboard Details" navigation={navigation} />
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Text>Dashboard Details</Text>
-        <TouchableOpacity
-          style={{marginTop: 20}}
-          onPress={() => navigation.navigate('Dashboard')}>
-          <Text>Go to Dashboard</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
-  );
-}
+// function DashboardDetails({navigation}) {
+//   return (
+//     <SafeAreaView style={{flex: 1}}>
+//       <CustomHeader title="Dashboard Details" navigation={navigation} />
+//       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+//         <Text>Dashboard Details</Text>
+//         <TouchableOpacity
+//           style={{marginTop: 20}}
+//           onPress={() => navigation.navigate('Dashboard')}>
+//           <Text>Go to Dashboard</Text>
+//         </TouchableOpacity>
+//       </View>
+//     </SafeAreaView>
+//   );
+// }
 
 function TransferScreen({navigation}) {
   return (
